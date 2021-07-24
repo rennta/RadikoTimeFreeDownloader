@@ -86,11 +86,3 @@ class TimeFreeDownloader:
 
     #--------------------------------------------------------------------------------------------------------# 
 
-Authentication = Authentication("https://radiko.jp/#!/ts/IBS/20210721030000")
-radioData = Authentication.getRadioData()
-auth1Header = Authentication.auth1()
-tokens = Authentication.getTokens(auth1Header)
-Authentication.auth2(tokens)
-TimeFreeDownloader = TimeFreeDownloader()
-TimeFreeDownloader.setup(radioData,tokens)
-TimeFreeDownloader.download("./output.m4a")
