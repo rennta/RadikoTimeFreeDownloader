@@ -34,6 +34,7 @@ class Radiko:
         radioData   = Auth.getRadioData()
         auth1Header = Auth.auth1()
         tokens      = Auth.getTokens(auth1Header)
+        Auth.auth2(tokens)
    
         f = open('../data/saveURL.txt', 'r',encoding="utf-8")
         datalist = f.readlines()
@@ -44,6 +45,3 @@ class Radiko:
         TFD.download(saveURL)
 
     #--------------------------------------------------------------------------------------------------------# 
-
-r = Radiko()
-r.run()

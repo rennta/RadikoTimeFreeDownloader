@@ -49,11 +49,6 @@ class TimeFreeDownloader:
         self.startTime  = radioInfoData[1]
         self.finishTime = radioInfoData[2]
         self.authToken  = tokenData[0]
-
-        print("self.stationId:"+self.stationId)
-        print("self.startTime:"+self.startTime)
-        print("self.finishTime:"+self.finishTime)
-        print("self.authToken:"+self.authToken)
     
     #--------------------------------------------------------------------------------------------------------#  
 
