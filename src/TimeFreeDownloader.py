@@ -11,7 +11,6 @@
 
 # [ライブラリ]
 import subprocess
-from Authentication import Authentication
 
 # [ラジコタイムフリーダウンロードクラス]
 class TimeFreeDownloader:

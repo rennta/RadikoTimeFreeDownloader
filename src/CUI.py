@@ -34,6 +34,8 @@ class CUI:
                  "#   - CreepyNutsのオールナイトニッポン0（ZERO）\n"\
                  "#     ---> 1\n"\
                  "# \n"\
+                 "# - 有吉弘行のSUNDAY NIGHT DREAMER\n"\
+                 "#     ---> 2\n"\
                  "# \n"\
         
         print(info)
@@ -54,15 +56,17 @@ class CUI:
         target_date = datetime.today()
 
         if(count == 1):
-            wednesday = target_date - relativedelta(weeks=1, weekday=calendar.WEDNESDAY)
-            radioURL  = "https://radiko.jp/#!/ts/IBS/"+wednesday.strftime("%Y%m%d")+"030000"
+            day       = target_date - relativedelta(weeks=1, weekday=calendar.WEDNESDAY)
+            radioURL  = "https://radiko.jp/#!/ts/IBS/"+day.strftime("%Y%m%d")+"030000"
             radioName = "CreepyNutsのオールナイトニッポン0（ZERO）"
-            print("[   radio URL   ] :",radioURL)
 
         elif(count == 2):
-            sunday    = target_date - relativedelta(weeks=1, weekday=calendar.SUNDAY)
-            print(sunday)
+            day    = target_date - relativedelta(weeks=1, weekday=calendar.SUNDAY)
+            radioURL  = "https://radiko.jp/#!/ts/FMGIFU/"+day.strftime("%Y%m%d")+"200000"
+            radioName = "有吉弘行のSUNDAY_NIGHT_DREAMER"
 
-        return radioURL,radioName,wednesday
+        print("[   radio URL   ] :",radioURL)
+
+        return radioURL,radioName,day
 
     #--------------------------------------------------------------------------------------------------------#  
