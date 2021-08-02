@@ -28,10 +28,10 @@ class Radiko:
     def run(self):
         
         UI = CUI()
-        count       = UI.messageInfo()
+        count       = UI.selectRadio()
         radioInfo   = UI.getURL(int(count))
 
-        if(int(count) == 1):
+        if(count == 1):
             Auth        = Authentication(radioInfo[0])
             radioData   = Auth.getRadioData()
             auth1Header = Auth.auth1()
@@ -46,11 +46,14 @@ class Radiko:
             TFD.setup(radioData,tokens)
             TFD.download(saveURL)
 
-        if(int(count) == 2):
-            Auth        = Authentication(radioInfo[0])
-            radioData   = Auth.getRadioData()
-            auth1Header = Auth.auth1()
-            tokens      = Auth.getTokens(auth1Header)
+        if(count == 2):
+            stationCount = UI.selectStation()
+            SND_stationID = "FMGIFU" if stationCount == 1 else "FMGUNMA"
+            radioURL    = "https://radiko.jp/#!/ts/"+SND_stationID+"/"+radioInfo[2].strftime("%Y%m%d")+"200000"
+            Auth         = Authentication(radioURL)
+            radioData    = Auth.getRadioData()
+            auth1Header  = Auth.auth1()
+            tokens       = Auth.getTokens(auth1Header)
             Auth.auth2(tokens)
 
             saveURL = "../temp/output1.m4a"
@@ -58,7 +61,7 @@ class Radiko:
             TFD.setup(radioData,tokens)
             TFD.download(saveURL)
 
-            radioURL1    = "https://radiko.jp/#!/ts/FMGIFU/"+radioInfo[2].strftime("%Y%m%d")+"210000"
+            radioURL1    = "https://radiko.jp/#!/ts/"+SND_stationID+"/"+radioInfo[2].strftime("%Y%m%d")+"210000"
             Auth         = Authentication(radioURL1)
             radioData    = Auth.getRadioData()
             auth1Header  = Auth.auth1()
